@@ -1,0 +1,21 @@
+server:
+  port: 4767
+spring:
+  application:
+    name: service-zuul
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:4761/eureka
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: service-ribbon
+    api-b:
+      path: /api-b/**
+      serviceId: service-feign

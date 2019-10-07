@@ -1,0 +1,7 @@
+1.bootstrap.yml 加载优先级高于 application.yml
+2.针对config server，spring,cloud.config.url的设置问题：
+  --没有bootstramp.yml,就算application.yml设置url的端口为非8888，
+    log一样会打印Fetching config from server at : http://localhost:8888/，
+    这是因为在执行此段代码是，还没有加载application.yml,使用的是默认配置，
+    但是在之前会加载bootstramp.yml
+  --针对spring-cloud-config，config client的url配置在bootstramp.yml中设置
